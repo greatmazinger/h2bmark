@@ -5,12 +5,12 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
 /**
- * Unit test for simple App.
+ * Unit test for H2BMark.
  */
-public class AppTest 
+public class H2BMarkTest 
 {
     /**
-     * Rigorous Test :-)
+     * Fake test. TODO.
      */
     @Test
     public void shouldAnswerWithTrue()

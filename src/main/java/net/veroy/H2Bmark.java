@@ -18,7 +18,6 @@ import org.h2.tools.DeleteDbFiles;
 public class H2Bmark {
 
     /**
-     * Called when ran from command line.
      *
      * @param args ignored
      */
@@ -34,8 +33,15 @@ public class H2Bmark {
         // from the SQL script file 'init.sql'
         // stat.execute("runscript from 'init.sql'");
 
-        stat.execute("create table test(id int primary key, name varchar(255))");
-        stat.execute("insert into test values(1, 'Hello')");
+        stat.execute("create table tripdata(id int primary key," +
+                     "                      duration_sec int," +
+                     "                      start_station_id int," +
+                     "                      end_station_id int," + 
+                     "                      bike_id int," +
+                     "                      user_type varchar(255)," +
+                     "                      member_birth_year int," +
+                     "                      member_gender varchar(25))");
+        // stat.execute("insert into test values(1, 'Hello')");
         ResultSet rs;
         rs = stat.executeQuery("select * from test");
         while (rs.next()) {
