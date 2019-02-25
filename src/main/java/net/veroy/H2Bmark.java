@@ -5,11 +5,16 @@
  */
 package net.veroy.research;
 
+import com.opencsv.CSVReaderHeaderAware;
+import java.io.FileReader;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.Map;
 import org.h2.tools.DeleteDbFiles;
+
 
 /**
  * A simple H2 benchmark.
@@ -41,12 +46,18 @@ public class H2Bmark {
                      "                      user_type varchar(255)," +
                      "                      member_birth_year int," +
                      "                      member_gender varchar(25))");
+
+        // TODO: Hardcoded link. Should make this a command-line argument:
+        String csvFile = "/data/rveroy/pulsrc/BMARKS/201901-fordgobike-tripdata.csv";
+
+        Map<String, String> values = new CSVReaderHeaderAware(new FileReader("yourfile.csv")).readMap();
+
         // stat.execute("insert into test values(1, 'Hello')");
         ResultSet rs;
-        rs = stat.executeQuery("select * from test");
-        while (rs.next()) {
-            System.out.println(rs.getString("name"));
-        }
+        // rs = stat.executeQuery("select * from tripdata");
+        // while (rs.next()) {
+        //     System.out.println(rs.getString("name"));
+        // }
         stat.close();
         conn.close();
     }
