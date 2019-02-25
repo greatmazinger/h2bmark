@@ -27,11 +27,11 @@ public class H2Bmark {
      * @param args ignored
      */
     public static void main(String... args) throws Exception {
-        // delete the database named 'test' in the user home directory
-        DeleteDbFiles.execute("~", "test", true);
+        // delete the database named 'tripdata' in the user home directory
+        DeleteDbFiles.execute("/data/rveroy/pulsrc/BMARKS", "tripdata", true);
 
         Class.forName("org.h2.Driver");
-        Connection conn = DriverManager.getConnection("jdbc:h2:~/test");
+        Connection conn = DriverManager.getConnection("jdbc:h2:/data/rveroy/pulsrc/BMARKS/tripdata");
         Statement stat = conn.createStatement();
 
         // this line would initialize the database
@@ -50,9 +50,9 @@ public class H2Bmark {
         // TODO: Hardcoded link. Should make this a command-line argument:
         String csvFile = "/data/rveroy/pulsrc/BMARKS/201901-fordgobike-tripdata.csv";
 
-        Map<String, String> values = new CSVReaderHeaderAware(new FileReader("yourfile.csv")).readMap();
+        Map<String, String> values = new CSVReaderHeaderAware(new FileReader(csvFile)).readMap();
 
-        // stat.execute("insert into test values(1, 'Hello')");
+        // stat.execute("insert into tripdata values(1, 'Hello')");
         ResultSet rs;
         // rs = stat.executeQuery("select * from tripdata");
         // while (rs.next()) {
