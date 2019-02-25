@@ -1,0 +1,6 @@
+# Java generated directories/files
+target
+
+# vim swap files
+*swp
+*~
