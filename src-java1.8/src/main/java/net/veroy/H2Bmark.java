@@ -27,11 +27,12 @@ public class H2Bmark {
      * @param args ignored
      */
     public static void main(String... args) throws Exception {
+        // TODO: Hardcoded link. Should make this a command-line argument:
         // delete the database named 'tripdata' in the user home directory
-        DeleteDbFiles.execute("/data/rveroy/pulsrc/BMARKS", "tripdata", true);
-
+        String dbpath = "/data/rveroy/pulsrc/BMARKS/";
+        DeleteDbFiles.execute(dbpath, "tripdata", true);
         Class.forName("org.h2.Driver");
-        Connection conn = DriverManager.getConnection("jdbc:h2:/data/rveroy/pulsrc/BMARKS/tripdata");
+        Connection conn = DriverManager.getConnection("jdbc:h2:" + dbpath + "tripdata");
         Statement stat = conn.createStatement();
 
         // this line would initialize the database
